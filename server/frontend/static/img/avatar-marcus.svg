@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title">
+  <title id="title">Marcus Rivera avatar</title>
+  <rect width="120" height="120" rx="8" fill="#fff1e5"/>
+  <circle cx="60" cy="50" r="25" fill="#3b2d28"/>
+  <circle cx="60" cy="57" r="21" fill="#c8895f"/>
+  <path d="M37 48c5-17 18-26 33-23 12 2 20 11 21 23-16-5-34-5-54 0z" fill="#2b211e"/>
+  <path d="M28 108c6-22 18-34 32-34s26 12 32 34" fill="#d47a2a"/>
+  <path d="M51 68c6 5 12 5 18 0" fill="none" stroke="#633c28" stroke-linecap="round" stroke-width="3"/>
+  <circle cx="52" cy="57" r="2.5" fill="#172321"/>
+  <circle cx="68" cy="57" r="2.5" fill="#172321"/>
+  <path d="M49 76h22" stroke="#2b211e" stroke-linecap="round" stroke-width="4"/>
+</svg>

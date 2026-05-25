@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" role="img" aria-labelledby="title desc">
+  <title id="title">Dealership review score card</title>
+  <desc id="desc">A stylized car with review score cards.</desc>
+  <rect x="8" y="8" width="404" height="244" rx="8" fill="#ffffff" stroke="#d9e3df" stroke-width="2"/>
+  <rect x="30" y="30" width="164" height="44" rx="8" fill="#eaf5f1"/>
+  <rect x="48" y="47" width="84" height="10" rx="5" fill="#1f5d50"/>
+  <rect x="242" y="30" width="132" height="44" rx="8" fill="#fff1e5"/>
+  <circle cx="267" cy="52" r="12" fill="#d47a2a"/>
+  <path d="M262 52l4 4 8-10" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <rect x="290" y="47" width="52" height="10" rx="5" fill="#9a4e12"/>
+  <path d="M94 150l21-48a20 20 0 0 1 18.3-12h75.4a20 20 0 0 1 18.3 12l21 48" fill="#1f5d50"/>
+  <path d="M78 146h188a22 22 0 0 1 22 22v26a10 10 0 0 1-10 10H66a10 10 0 0 1-10-10v-26a22 22 0 0 1 22-22z" fill="#d47a2a"/>
+  <path d="M126 111a12 12 0 0 1 11-7h67a12 12 0 0 1 11 7l12 28H114l12-28z" fill="#dff4ef"/>
+  <circle cx="104" cy="204" r="20" fill="#172321"/>
+  <circle cx="240" cy="204" r="20" fill="#172321"/>
+  <circle cx="104" cy="204" r="8" fill="#ffffff"/>
+  <circle cx="240" cy="204" r="8" fill="#ffffff"/>
+  <rect x="300" y="104" width="78" height="88" rx="8" fill="#f6faf8" stroke="#d9e3df" stroke-width="2"/>
+  <text x="339" y="139" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#1f5d50">4.8</text>
+  <g fill="#d47a2a">
+    <path d="M310 158l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/>
+    <path d="M326 158l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/>
+    <path d="M342 158l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/>
+    <path d="M358 158l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/>
+  </g>
+</svg>

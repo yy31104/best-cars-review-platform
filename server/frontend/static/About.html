@@ -1,134 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About Us - Best Cars</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="/static/style.css">
   <link rel="stylesheet" href="/static/bootstrap.min.css">
-<script>
-const logout = async (e) => {
-  if (e) {
-    e.preventDefault();
-  }
-  const res = await fetch("/djangoapp/logout", {
-    method: "GET"
-  });
-  const json = await res.json();
-  if (json) {
-    sessionStorage.clear();
-    window.location.href = "/";
-  } else {
-    alert("The user could not be logged out.");
-  }
-};
-
-let checkSession = ()=>{
-  let curr_user = sessionStorage.getItem("username");
-
-  if (curr_user && curr_user !== "") {
-    document.getElementById("loginlogout").innerHTML =
-    '<span class="homepage_links">' + curr_user +'</span>' +
-    '<a class="homepage_links" onclick="logout(event)" href="/">Logout</a>'
-  } else {
-    document.getElementById("loginlogout").innerHTML =
-    '<a class="homepage_links" href="/login">Login</a>'+
-    '<a class="homepage_links" href="/register">Register</a>'
-  }
- }
-</script>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/session.js" defer></script>
 </head>
-<body onload="checkSession()">
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
-    <div class="container-fluid">
-      <h2 style="padding-right: 5%;">Dealerships</h2>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" href="/dealers">Dealers</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" style="font-size: larger;" href="/about">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
-          </li>
-        </ul>
-        <span class="navbar-text">
-          <div class="loginlink" id="loginlogout">
-          </div>
-        </span>
+<body class="bc-page">
+  <nav class="navbar navbar-expand-lg bc-nav">
+    <div class="bc-container bc-nav-inner">
+      <a class="bc-brand" href="/" aria-label="Best Cars home">
+        <img class="bc-logo" src="/static/img/logo-mark.svg" alt="">
+        <span>Best Cars</span>
+      </a>
+      <div class="bc-nav-links">
+        <a class="bc-nav-link" href="/">Home</a>
+        <a class="bc-nav-link" href="/dealers">Dealers</a>
+        <a class="bc-nav-link active" aria-current="page" href="/about">About Us</a>
+        <a class="bc-nav-link" href="/contact">Contact Us</a>
       </div>
+      <div class="loginlink bc-auth-links" id="loginlogout"></div>
     </div>
   </nav>
 
-  <main class="container" style="max-width: 1100px; margin-top: 40px; margin-bottom: 40px;">
-    <section class="card" style="width: 100%; margin: auto;">
-      <div class="banner" name="about-header" style="padding: 30px;">
-        <h1>About Best Cars</h1>
-        <p class="details" style="text-align: center; max-width: 850px;">
-          Best Cars helps drivers discover trusted dealerships, compare customer experiences, and make more confident vehicle decisions. Our platform is designed to bring dealership information, service quality, and community reviews into one clear place.
+  <main class="bc-container bc-main">
+    <section class="bc-intro">
+      <p class="bc-kicker">About Best Cars</p>
+      <h1>We make dealership research more transparent.</h1>
+      <p class="bc-muted bc-intro-text">
+        Best Cars helps drivers discover trusted dealerships, compare real customer experiences, and make more confident vehicle decisions. Our platform brings dealership information, service quality, and community reviews into one clear place.
+      </p>
+    </section>
+
+    <section class="bc-two-column" aria-label="Mission and values">
+      <article class="bc-card bc-feature">
+        <h2>Our Mission</h2>
+        <p class="bc-muted">
+          We make car shopping easier to evaluate by helping customers understand how dealerships perform before they visit the showroom.
         </p>
-      </div>
+      </article>
+      <article class="bc-card bc-feature">
+        <h2>Our Values</h2>
+        <p class="bc-muted">
+          We value clarity, fairness, reliable data, and respectful service experiences for every customer and dealership partner.
+        </p>
+      </article>
     </section>
 
-    <section class="row" style="align-items: stretch;">
-      <div class="card" style="width: 45%; min-width: 280px;">
-        <div class="card-body">
-          <p class="title">Our Mission</p>
-          <p class="card-text">
-            We make car shopping more transparent by helping customers understand how dealerships perform before they visit the showroom.
-          </p>
-        </div>
+    <section class="bc-section" aria-labelledby="leadership-team">
+      <div class="bc-section-heading">
+        <p class="bc-kicker">Leadership Team</p>
+        <h2 id="leadership-team" class="bc-section-title">People focused on trust, service, and useful data</h2>
       </div>
-      <div class="card" style="width: 45%; min-width: 280px;">
-        <div class="card-body">
-          <p class="title">Our Values</p>
-          <p class="card-text">
-            We value clarity, fairness, reliable data, and respectful service experiences for every customer and dealership partner.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section style="margin-top: 20px;">
-      <h2 style="text-align: center; margin-bottom: 20px;">Leadership Team</h2>
-      <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;">
-        <div class="card" style="width: 30%; min-width: 260px;">
-          <img class="card-img-top" src="/static/person.png" alt="Portrait placeholder for Olivia Chen, General Manager">
-          <div class="card-body">
-            <p class="title">Olivia Chen</p>
-            <p><strong>General Manager</strong></p>
-            <p class="card-text">Olivia guides platform strategy and works with dealership partners to improve customer trust across every listing.</p>
-            <p>olivia.chen@bestcars.example.com</p>
+      <div class="bc-team-grid">
+        <article class="bc-card bc-team-card">
+          <img class="bc-team-avatar" src="/static/img/avatar-olivia.svg" alt="Illustrated avatar of Olivia Chen">
+          <div>
+            <h3>Olivia Chen</h3>
+            <p class="bc-role">General Manager</p>
+            <p class="bc-muted">Olivia guides platform strategy and works with dealership partners to improve customer trust across every listing.</p>
+            <a href="mailto:olivia.chen@bestcars.example.com">olivia.chen@bestcars.example.com</a>
           </div>
-        </div>
+        </article>
 
-        <div class="card" style="width: 30%; min-width: 260px;">
-          <img class="card-img-top" src="/static/person.png" alt="Portrait placeholder for Marcus Rivera, Customer Experience Lead">
-          <div class="card-body">
-            <p class="title">Marcus Rivera</p>
-            <p><strong>Customer Experience Lead</strong></p>
-            <p class="card-text">Marcus reviews customer feedback trends and helps translate real buyer experiences into practical service improvements.</p>
-            <p>marcus.rivera@bestcars.example.com</p>
+        <article class="bc-card bc-team-card">
+          <img class="bc-team-avatar" src="/static/img/avatar-marcus.svg" alt="Illustrated avatar of Marcus Rivera">
+          <div>
+            <h3>Marcus Rivera</h3>
+            <p class="bc-role">Customer Experience Lead</p>
+            <p class="bc-muted">Marcus reviews customer feedback trends and helps translate real buyer experiences into practical service improvements.</p>
+            <a href="mailto:marcus.rivera@bestcars.example.com">marcus.rivera@bestcars.example.com</a>
           </div>
-        </div>
+        </article>
 
-        <div class="card" style="width: 30%; min-width: 260px;">
-          <img class="card-img-top" src="/static/person.png" alt="Portrait placeholder for Priya Nair, Inventory Insights Manager">
-          <div class="card-body">
-            <p class="title">Priya Nair</p>
-            <p><strong>Inventory Insights Manager</strong></p>
-            <p class="card-text">Priya focuses on dealership data quality so customers can compare locations with accurate and useful information.</p>
-            <p>priya.nair@bestcars.example.com</p>
+        <article class="bc-card bc-team-card">
+          <img class="bc-team-avatar" src="/static/img/avatar-priya.svg" alt="Illustrated avatar of Priya Nair">
+          <div>
+            <h3>Priya Nair</h3>
+            <p class="bc-role">Inventory Insights Manager</p>
+            <p class="bc-muted">Priya focuses on dealership data quality so customers can compare locations with accurate and useful information.</p>
+            <a href="mailto:priya.nair@bestcars.example.com">priya.nair@bestcars.example.com</a>
           </div>
-        </div>
+        </article>
       </div>
     </section>
   </main>

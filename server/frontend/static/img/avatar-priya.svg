@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title">
+  <title id="title">Priya Nair avatar</title>
+  <rect width="120" height="120" rx="8" fill="#eef1fa"/>
+  <circle cx="60" cy="48" r="27" fill="#242946"/>
+  <circle cx="60" cy="56" r="20" fill="#b97758"/>
+  <path d="M34 54c2-18 10-30 25-32 17-2 28 10 29 32-16-8-36-8-54 0z" fill="#171b32"/>
+  <path d="M29 108c5-22 17-34 31-34s26 12 31 34" fill="#5262a3"/>
+  <circle cx="52" cy="56" r="2.5" fill="#172321"/>
+  <circle cx="68" cy="56" r="2.5" fill="#172321"/>
+  <path d="M53 66c5 4 10 4 15 0" fill="none" stroke="#5d3529" stroke-linecap="round" stroke-width="3"/>
+  <circle cx="82" cy="61" r="4" fill="#d47a2a"/>
+</svg>
