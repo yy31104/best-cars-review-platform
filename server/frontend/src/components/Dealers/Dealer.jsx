@@ -2,57 +2,79 @@ import React, { useState,useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import "./Dealers.css";
 import "../assets/style.css";
-import positive_icon from "../assets/positive.png"
-import neutral_icon from "../assets/neutral.png"
-import negative_icon from "../assets/negative.png"
-import review_icon from "../assets/reviewbutton.png"
 import Header from '../Header/Header';
 
 const Dealer = () => {
-
-
   const [dealer, setDealer] = useState({});
   const [reviews, setReviews] = useState([]);
   const [dealerLoading, setDealerLoading] = useState(true);
   const [reviewsLoading, setReviewsLoading] = useState(true);
+  const [dealerError, setDealerError] = useState("");
+  const [reviewsError, setReviewsError] = useState("");
 
   let params = useParams();
   let id =params.id;
   let post_review = window.location.origin+`/postreview/${id}`;
 
-  const senti_icon = (sentiment)=>{
-    let icon = sentiment === "positive"?positive_icon:sentiment==="negative"?negative_icon:neutral_icon;
-    return icon;
+  const normalizeSentiment = (sentiment) => {
+    const normalized = String(sentiment || "neutral").toLowerCase();
+    if (normalized === "positive" || normalized === "negative") {
+      return normalized;
+    }
+    return "neutral";
+  }
+
+  const sentimentLabel = (sentiment) => {
+    const normalized = normalizeSentiment(sentiment);
+    return normalized.charAt(0).toUpperCase() + normalized.slice(1);
   }
 
   useEffect(() => {
     const get_dealer = async ()=>{
       setDealerLoading(true);
-      const res = await fetch(window.location.origin+`/djangoapp/dealer/${id}`, {
-        method: "GET"
-      });
-      const retobj = await res.json();
+      setDealerError("");
+      try {
+        const res = await fetch(window.location.origin+`/djangoapp/dealer/${id}`, {
+          method: "GET"
+        });
+        const retobj = await res.json();
 
-      if(retobj.status === 200) {
-        let dealerobjs = Array.from(retobj.dealer)
-        if(dealerobjs.length > 0) {
-          setDealer(dealerobjs[0])
+        if(retobj.status === 200) {
+          let dealerobjs = Array.from(retobj.dealer)
+          if(dealerobjs.length > 0) {
+            setDealer(dealerobjs[0])
+          } else {
+            setDealer({})
+            setDealerError("Dealer details could not be found.")
+          }
+        } else {
+          setDealer({})
+          setDealerError("Dealer details could not be loaded.")
         }
+      } catch {
+        setDealer({})
+        setDealerError("Dealer details could not be loaded. Please try again.")
       }
       setDealerLoading(false);
     }
 
     const get_reviews = async ()=>{
       setReviewsLoading(true);
-      const res = await fetch(window.location.origin+`/djangoapp/reviews/dealer/${id}`, {
-        method: "GET"
-      });
-      const retobj = await res.json();
+      setReviewsError("");
+      try {
+        const res = await fetch(window.location.origin+`/djangoapp/reviews/dealer/${id}`, {
+          method: "GET"
+        });
+        const retobj = await res.json();
 
-      if(retobj.status === 200) {
-        setReviews(Array.from(retobj.reviews))
-      } else {
+        if(retobj.status === 200) {
+          setReviews(Array.from(retobj.reviews))
+        } else {
+          setReviews([])
+        }
+      } catch {
         setReviews([])
+        setReviewsError("Reviews could not be loaded. Please try again.")
       }
       setReviewsLoading(false);
     }
@@ -61,40 +83,99 @@ const Dealer = () => {
     get_reviews();
   },[id]);
 
-let isLoggedIn = sessionStorage.getItem("username") != null ? true : false;
+  let isLoggedIn = sessionStorage.getItem("username") != null ? true : false;
 
-return(
-  <div>
+  const sentimentCounts = reviews.reduce((counts, review) => {
+    const sentiment = normalizeSentiment(review.sentiment);
+    counts[sentiment] += 1;
+    return counts;
+  }, {
+    positive: 0,
+    neutral: 0,
+    negative: 0
+  });
+
+  return(
+    <div className="bc-page">
       <Header/>
-      <div className="container mt-4">
+      <main className="bc-container bc-main dealer_detail_page">
         {dealerLoading ? (
-          <div className="alert alert-info dealer_state">Loading dealer...</div>
+          <div className="bc-card dealer_state">Loading dealer...</div>
+        ) : dealerError ? (
+          <div className="bc-card dealer_state">{dealerError}</div>
         ) : (
-          <div className="dealer_header">
-            <h1 style={{color:"grey"}}>
-              {dealer.full_name}
+          <section className="bc-card dealer_detail_header">
+            <div>
+              <p className="bc-kicker">Dealer profile</p>
+              <h1>{dealer.full_name}</h1>
+              <div className="dealer_meta">
+                <span>{dealer['city']}, {dealer['state']}</span>
+                <span>{dealer['address']}</span>
+                <span>ZIP {dealer['zip']}</span>
+              </div>
               {isLoggedIn ? (
-                <a href={post_review}><img src={review_icon} style={{width:'54px',marginLeft:'10px',marginTop:'10px'}} alt='Post Review'/></a>
+                <a className="bc-btn bc-btn-primary dealer_review_cta" href={post_review}>Write Review</a>
               ):<></>}
-            </h1>
-            <h4 style={{color:"grey"}}>{dealer['city']}, {dealer['address']}, Zip - {dealer['zip']}, {dealer['state']} </h4>
-          </div>
+            </div>
+
+            <div className="review_stats" aria-label="Review sentiment stats">
+              <div className="stat_card">
+                <span>{reviews.length}</span>
+                <small>Total reviews</small>
+              </div>
+              <div className="stat_card stat_positive">
+                <span>{sentimentCounts.positive}</span>
+                <small>Positive</small>
+              </div>
+              <div className="stat_card stat_neutral">
+                <span>{sentimentCounts.neutral}</span>
+                <small>Neutral</small>
+              </div>
+              <div className="stat_card stat_negative">
+                <span>{sentimentCounts.negative}</span>
+                <small>Negative</small>
+              </div>
+            </div>
+          </section>
         )}
-        <div className="reviews_panel">
-        {reviewsLoading ? (
-          <div className="alert alert-info dealer_state">Loading reviews...</div>
-        ): reviews.length === 0 ? <div className="alert alert-light border dealer_state">No reviews yet!</div> :
-        reviews.map(review => (
-          <div className='review_panel' key={review.id}>
-            <img src={senti_icon(review.sentiment)} className="emotion_icon" alt='Sentiment'/>
-            <div className='review'>{review.review}</div>
-            <div className="reviewer">{review.name} {review.car_make} {review.car_model} {review.car_year}</div>
+
+        <section className="reviews_section" aria-labelledby="dealer-reviews">
+          <div className="reviews_heading">
+            <div>
+              <p className="bc-kicker">Customer feedback</p>
+              <h2 id="dealer-reviews">Reviews</h2>
+            </div>
           </div>
-        ))}
-      </div>
+
+          {reviewsLoading ? (
+            <div className="bc-card dealer_state">Loading reviews...</div>
+          ): reviewsError ? (
+            <div className="bc-card dealer_state">{reviewsError}</div>
+          ) : reviews.length === 0 ? (
+            <div className="bc-card dealer_state">
+              <h3>No reviews yet</h3>
+              <p className="bc-muted">This dealership does not have customer reviews yet.</p>
+            </div>
+          ) : (
+            <div className="reviews_panel">
+              {reviews.map((review, index) => (
+                <article className='bc-card review_panel review_card' key={review.id || `${review.name}-${index}`}>
+                  <div className="review_card_top">
+                    <span className={`sentiment_chip sentiment_${normalizeSentiment(review.sentiment)}`}>
+                      {sentimentLabel(review.sentiment)}
+                    </span>
+                    <span className="review_vehicle">{review.car_make} {review.car_model} {review.car_year}</span>
+                  </div>
+                  <p className='review'>{review.review}</p>
+                  <p className="reviewer">Reviewed by {review.name}</p>
+                </article>
+              ))}
+            </div>
+          )}
+        </section>
+      </main>
     </div>
-  </div>
-)
+  )
 }
 
 export default Dealer
