@@ -1,79 +1,72 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="static/style.css">
-  <link rel="stylesheet" href="static/bootstrap.min.css">
-<script>
-
-const logout = async (e) => {
-  if (e) {
-    e.preventDefault();
-  }
-  const res = await fetch("/djangoapp/logout", {
-    method: "GET"
-  });
-  const json = await res.json();
-  if (json) {
-    sessionStorage.clear();
-    window.location.href = "/";
-  } else {
-    alert("The user could not be logged out.");
-  }
-};
-
-let checkSession = ()=>{
-  let curr_user = sessionStorage.getItem("username");
-
-  if (curr_user && curr_user !== "") {
-    document.getElementById("loginlogout").innerHTML = 
-    '<span class="homepage_links">' + curr_user +'</span>' +
-    '<a class="homepage_links" onclick="logout(event)" href="/">Logout</a>'
-  } else {
-    document.getElementById("loginlogout").innerHTML = 
-    '<a class="homepage_links" href="/login">Login</a>'+
-    '<a class="homepage_links"  href="/register">Register</a>'
-  }
- }
-</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Best Cars</title>
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/session.js" defer></script>
 </head>
-<body onload="checkSession()">
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
-  <div class="container-fluid">
-    <h2 style="padding-right: 5%;">Dealerships</h2>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" style="font-size: larger;" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="font-size: larger;" href="/dealers">Dealers</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="font-size: larger;" href="/about">About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
-        </li>
-      </ul>
-      <span class="navbar-text">
-        <div class="loginlink" id="loginlogout">
-        </div>
-        </span>
+<body class="bc-page">
+  <nav class="navbar navbar-expand-lg bc-nav">
+    <div class="bc-container bc-nav-inner">
+      <a class="bc-brand" href="/" aria-label="Best Cars home">
+        <img class="bc-logo" src="/static/img/logo-mark.svg" alt="">
+        <span>Best Cars</span>
+      </a>
+      <div class="bc-nav-links">
+        <a class="bc-nav-link active" aria-current="page" href="/">Home</a>
+        <a class="bc-nav-link" href="/dealers">Dealers</a>
+        <a class="bc-nav-link" href="/about">About Us</a>
+        <a class="bc-nav-link" href="/contact">Contact Us</a>
+      </div>
+      <div class="loginlink bc-auth-links" id="loginlogout"></div>
     </div>
-  </div>
-</nav>
-<div style="display: flex;flex-direction: column;">
-<div class="card" style="width: 50%;margin-top: 50px;align-self: center;">
-  <img src="static/car_dealership.jpg" class="card-img-top" alt="...">
-  <div class="banner">
-    <h5>Welcome to our Dealerships!</h5>
-    <a href="/dealers" class="btn" style="background-color: aqua;margin:10px">View Dealerships</a>
-  </div>
-</div>
-</div>
+  </nav>
+
+  <main class="bc-container bc-main">
+    <section class="bc-hero">
+      <div class="bc-hero-copy">
+        <p class="bc-kicker">Dealership reviews made clearer</p>
+        <h1>Find trusted dealerships, compare reviews, and share your experience.</h1>
+        <p class="bc-muted bc-hero-text">
+          Best Cars brings dealership listings, customer feedback, and sentiment-scored reviews together so drivers can make confident decisions before visiting the showroom.
+        </p>
+        <div class="bc-actions">
+          <a class="bc-btn bc-btn-primary" href="/dealers">Browse Dealers</a>
+          <a class="bc-btn bc-btn-secondary" href="/dealers">Write a Review</a>
+        </div>
+      </div>
+      <div class="bc-hero-media" aria-label="Best Cars dealership review preview">
+        <img class="bc-hero-photo" src="/static/car_dealership.jpg" alt="Modern car dealership exterior">
+        <img class="bc-hero-accent" src="/static/img/hero-car-review.svg" alt="">
+      </div>
+    </section>
+
+    <section class="bc-section" aria-labelledby="how-it-works">
+      <div class="bc-section-heading">
+        <p class="bc-kicker">How it works</p>
+        <h2 id="how-it-works" class="bc-section-title">A quicker path to a dealership you can trust</h2>
+      </div>
+      <div class="bc-steps">
+        <article class="bc-card bc-step">
+          <span class="bc-step-number">1</span>
+          <h3>Browse dealers</h3>
+          <p class="bc-muted">Search dealership listings by location and compare the basics before you plan a visit.</p>
+        </article>
+        <article class="bc-card bc-step">
+          <span class="bc-step-number">2</span>
+          <h3>Read sentiment-scored reviews</h3>
+          <p class="bc-muted">Use customer review signals to understand service quality, responsiveness, and buying experiences.</p>
+        </article>
+        <article class="bc-card bc-step">
+          <span class="bc-step-number">3</span>
+          <h3>Share your experience</h3>
+          <p class="bc-muted">Help the next driver by posting a clear review after working with a dealership.</p>
+        </article>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
