@@ -1,0 +1,7 @@
+.venv/
+db.sqlite3
+db.sqlite3-journal
+frontend/node_modules/
+database/node_modules/
+**/__pycache__/
+*.pyc

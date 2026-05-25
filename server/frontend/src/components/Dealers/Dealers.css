@@ -1,0 +1,118 @@
+table{
+    margin:5px;
+    padding:10px;
+    border: grey solid 1px;
+    width:100%
+  }
+  
+  td{
+    padding:10px;
+    align-self: center;
+    border:solid grey .5px;
+    text-align: center;
+    font-size: large;
+  }
+  
+  .review_panel{
+    display: flex;
+    flex-direction: column;
+    border: solid grey;
+    position: relative;
+    min-height: 220px;
+    width: 260px;
+    overflow-y: scroll;
+    padding: 1rem;
+    padding-top: 4rem;
+    border-radius:10px; 
+    background: white;
+    box-shadow: 0 8px 24px rgba(33, 37, 41, 0.12);
+    margin-bottom: 1rem;
+    justify-content: space-between;
+  }
+
+  .postreview{
+    margin:20px;
+    padding:10px;
+    font-size: larger;
+  }
+
+  th{
+    padding:5px;
+    align-self: center;
+    text-align: center;
+    font-size: large;
+    margin-bottom: 1rem;
+    vertical-align: middle;
+    color: black;
+  }
+
+  .reviews_panel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    overflow-wrap: normal;
+    margin-top: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .reviewer {
+    margin: 10px; /* Optional margin for spacing */
+    font-style: italic;
+    color: gray;
+    font-size: small;
+}
+
+.review {
+  margin-top: 0;
+}
+
+.emotion_icon {
+  align-self: center;
+  position:absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+    width:40px;
+    height:40px;
+    background-color:#0C9;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;  
+}
+
+.review_icon {
+  width:40px;
+}
+
+.review_icon:hover {
+  transform: scale(1.1);
+  border: solid lightgray;
+}
+
+.dealers_table {
+  background: white;
+  box-shadow: 0 6px 20px rgba(33, 37, 41, 0.08);
+}
+
+.dealer_header {
+  margin-top: 10px;
+  padding: 1.25rem;
+  border: 1px solid rgba(97, 64, 128, 0.16);
+  border-radius: 8px;
+  background: white;
+}
+
+.dealer_state {
+  width: 100%;
+}
+
+.postreview_container {
+  max-width: 760px;
+  padding: 1.5rem;
+  border: 1px solid rgba(97, 64, 128, 0.16);
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 8px 24px rgba(33, 37, 41, 0.08);
+}
