@@ -1,90 +1,124 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1480 860" role="img" aria-labelledby="title desc">
   <title id="title">Best Cars architecture diagram</title>
-  <desc id="desc">Architecture diagram for browser, Django, React static build, SQLite, Express, MongoDB, sentiment analyzer, GitHub Actions, Docker, and Kubernetes.</desc>
+  <desc id="desc">Architecture diagram showing browser, Django web app and proxy, React static build, SQLite, Express dealer and review service, MongoDB, sentiment analyzer, GitHub Actions, Docker, and Kubernetes.</desc>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L10,4 L0,8 Z" fill="#1f5d50"/>
     </marker>
+    <marker id="arrowSoft" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#d47a2a"/>
+    </marker>
     <style>
       .bg { fill: #f4f7f5; }
-      .box { fill: #ffffff; stroke: #d9e3df; stroke-width: 2; rx: 12; }
-      .primary { fill: #1f5d50; }
-      .accent { fill: #d47a2a; }
-      .muted { fill: #5e6b66; }
-      .title { fill: #172321; font: 700 22px Arial, Helvetica, sans-serif; }
+      .box { fill: #ffffff; stroke: #d9e3df; stroke-width: 2; }
+      .heading { fill: #172321; font: 700 22px Arial, Helvetica, sans-serif; }
+      .subheading { fill: #5e6b66; font: 13px Arial, Helvetica, sans-serif; }
       .label { fill: #172321; font: 700 16px Arial, Helvetica, sans-serif; }
       .small { fill: #5e6b66; font: 13px Arial, Helvetica, sans-serif; }
+      .edge { fill: #172321; font: 700 12px Arial, Helvetica, sans-serif; }
       .line { fill: none; stroke: #1f5d50; stroke-width: 3; marker-end: url(#arrow); }
-      .softline { fill: none; stroke: #d47a2a; stroke-width: 3; marker-end: url(#arrow); }
+      .softline { fill: none; stroke: #d47a2a; stroke-width: 3; marker-end: url(#arrowSoft); }
     </style>
   </defs>
 
-  <rect class="bg" width="1200" height="760"/>
-  <text class="title" x="60" y="58">Best Cars Dealership Review Platform</text>
-  <text class="small" x="60" y="82">Full-stack Django, React, Express, MongoDB, Docker, Kubernetes, CI, and sentiment-analysis architecture</text>
+  <rect class="bg" width="1480" height="860"/>
+  <text class="heading" x="60" y="58">Best Cars Dealership Review Platform</text>
+  <text class="subheading" x="60" y="84">Full-stack Django, React, Express, MongoDB, Docker, Kubernetes, CI, and sentiment-analysis architecture</text>
 
-  <rect class="box" x="70" y="150" width="190" height="100" rx="12" ry="12"/>
-  <text class="label" x="105" y="190">Browser</text>
-  <text class="small" x="105" y="215">Static pages</text>
-  <text class="small" x="105" y="235">React routes</text>
+  <!-- Browser -->
+  <rect class="box" x="50" y="185" width="200" height="110" rx="12" ry="12"/>
+  <text class="label" x="85" y="225">Browser</text>
+  <text class="small" x="85" y="253">Static pages</text>
+  <text class="small" x="85" y="275">React routes</text>
 
-  <rect class="box" x="360" y="120" width="260" height="160" rx="12" ry="12"/>
-  <text class="label" x="395" y="165">Django web app / proxy</text>
-  <text class="small" x="395" y="195">Auth and sessions</text>
-  <text class="small" x="395" y="217">Static page serving</text>
-  <text class="small" x="395" y="239">Dealer/review BFF endpoints</text>
+  <!-- Django web app / proxy -->
+  <rect class="box" x="360" y="145" width="320" height="200" rx="12" ry="12"/>
+  <text class="label" x="390" y="185">Django web app / proxy</text>
+  <text class="small" x="390" y="215">Auth and sessions</text>
+  <text class="small" x="390" y="237">Static page serving</text>
+  <text class="small" x="390" y="259">Dealer/review BFF endpoints</text>
+  <text class="small" x="390" y="281">Calls sentiment analyzer</text>
 
-  <rect class="box" x="710" y="120" width="250" height="100" rx="12" ry="12"/>
-  <text class="label" x="745" y="160">React static build</text>
-  <text class="small" x="745" y="188">Login, register, dealers,</text>
-  <text class="small" x="745" y="208">dealer detail, post review</text>
+  <!-- React static build -->
+  <rect class="box" x="820" y="160" width="320" height="150" rx="12" ry="12"/>
+  <text class="label" x="850" y="210">React static build</text>
+  <text class="small" x="850" y="240">Login, register, dealers,</text>
+  <text class="small" x="850" y="262">dealer detail, post review</text>
+  <text class="small" x="850" y="284">Served from Django</text>
 
-  <rect class="box" x="710" y="270" width="250" height="100" rx="12" ry="12"/>
-  <text class="label" x="745" y="310">SQLite</text>
-  <text class="small" x="745" y="338">Django users, sessions,</text>
-  <text class="small" x="745" y="358">car make/model data</text>
+  <!-- SQLite -->
+  <rect class="box" x="820" y="360" width="320" height="130" rx="12" ry="12"/>
+  <text class="label" x="850" y="400">SQLite</text>
+  <text class="small" x="850" y="430">Django users and sessions</text>
+  <text class="small" x="850" y="452">Car make/model reference data</text>
 
-  <rect class="box" x="360" y="420" width="260" height="130" rx="12" ry="12"/>
-  <text class="label" x="395" y="462">Express dealers/reviews</text>
-  <text class="small" x="395" y="492">Dealer and review API</text>
-  <text class="small" x="395" y="514">Seeds bundled JSON data</text>
+  <!-- Sentiment Analyzer -->
+  <rect class="box" x="50" y="490" width="240" height="170" rx="12" ry="12"/>
+  <text class="label" x="80" y="530">Sentiment Analyzer</text>
+  <text class="small" x="80" y="558">Flask and NLTK VADER</text>
+  <text class="small" x="80" y="580">Returns positive, neutral,</text>
+  <text class="small" x="80" y="602">or negative scores</text>
+  <text class="small" x="80" y="624">IBM Code Engine deployable</text>
 
-  <rect class="box" x="710" y="435" width="250" height="100" rx="12" ry="12"/>
-  <text class="label" x="745" y="475">MongoDB</text>
-  <text class="small" x="745" y="503">Dealerships collection</text>
-  <text class="small" x="745" y="523">Reviews collection</text>
+  <!-- Express dealers/reviews -->
+  <rect class="box" x="360" y="490" width="320" height="170" rx="12" ry="12"/>
+  <text class="label" x="390" y="530">Express dealers/reviews</text>
+  <text class="small" x="390" y="558">Dealer and review API</text>
+  <text class="small" x="390" y="580">Seeds bundled JSON data</text>
+  <text class="small" x="390" y="602">Listens on port 3030</text>
 
-  <rect class="box" x="70" y="420" width="190" height="130" rx="12" ry="12"/>
-  <text class="label" x="105" y="462">Sentiment Analyzer</text>
-  <text class="small" x="105" y="492">Flask and NLTK VADER</text>
-  <text class="small" x="105" y="514">IBM Code Engine path</text>
+  <!-- MongoDB -->
+  <rect class="box" x="820" y="520" width="320" height="130" rx="12" ry="12"/>
+  <text class="label" x="850" y="560">MongoDB</text>
+  <text class="small" x="850" y="590">Dealerships collection</text>
+  <text class="small" x="850" y="612">Reviews collection</text>
 
-  <rect class="box" x="70" y="620" width="250" height="80" rx="12" ry="12"/>
-  <text class="label" x="105" y="655">GitHub Actions CI</text>
-  <text class="small" x="105" y="680">Backend, Frontend, Docker jobs</text>
+  <!-- GitHub Actions CI -->
+  <rect class="box" x="50" y="730" width="280" height="90" rx="12" ry="12"/>
+  <text class="label" x="80" y="765">GitHub Actions CI</text>
+  <text class="small" x="80" y="792">Backend, Frontend, Docker jobs</text>
 
-  <rect class="box" x="440" y="620" width="290" height="80" rx="12" ry="12"/>
-  <text class="label" x="475" y="655">Docker / Docker Compose</text>
-  <text class="small" x="475" y="680">Django image and Express/Mongo local stack</text>
+  <!-- Docker / Docker Compose -->
+  <rect class="box" x="450" y="730" width="340" height="90" rx="12" ry="12"/>
+  <text class="label" x="480" y="765">Docker / Docker Compose</text>
+  <text class="small" x="480" y="792">Django image and Express/Mongo local stack</text>
 
-  <rect class="box" x="850" y="620" width="260" height="80" rx="12" ry="12"/>
-  <text class="label" x="885" y="655">Kubernetes deployment</text>
-  <text class="small" x="885" y="680">Django Deployment and NodePort Service</text>
+  <!-- Kubernetes deployment -->
+  <rect class="box" x="900" y="730" width="280" height="90" rx="12" ry="12"/>
+  <text class="label" x="930" y="765">Kubernetes deployment</text>
+  <text class="small" x="930" y="792">Django Deployment and NodePort Service</text>
 
-  <path class="line" d="M260 200 C300 200 320 200 360 200"/>
-  <path class="line" d="M620 170 C660 170 670 170 710 170"/>
-  <path class="line" d="M620 235 C660 270 670 305 710 320"/>
-  <path class="line" d="M490 280 C490 340 490 360 490 420"/>
-  <path class="line" d="M620 485 C665 485 665 485 710 485"/>
-  <path class="softline" d="M360 245 C305 300 245 360 210 420"/>
-  <path class="softline" d="M195 620 C260 590 340 560 410 540"/>
-  <path class="softline" d="M320 660 C370 660 390 660 440 660"/>
-  <path class="softline" d="M730 660 C780 660 800 660 850 660"/>
+  <!-- Connectors -->
 
-  <text class="small" x="282" y="187">HTTP</text>
-  <text class="small" x="646" y="155">Serves compiled assets</text>
-  <text class="small" x="640" y="304">ORM</text>
-  <text class="small" x="505" y="360">Proxy API calls</text>
-  <text class="small" x="642" y="472">Mongoose</text>
-  <text class="small" x="205" y="342">Review text scoring</text>
+  <!-- Browser to Django (HTTP) -->
+  <path class="line" d="M250 240 L360 240"/>
+  <text class="edge" x="278" y="230">HTTP</text>
+
+  <!-- Django to React static build (serves compiled assets) -->
+  <path class="line" d="M680 235 L820 235"/>
+  <text class="edge" x="690" y="225">Serves compiled assets</text>
+
+  <!-- Django to SQLite (ORM) -->
+  <path class="line" d="M680 320 C730 340 780 370 820 400"/>
+  <text class="edge" x="704" y="358">ORM</text>
+
+  <!-- Django to Express (proxy API calls) -->
+  <path class="line" d="M520 345 L520 490"/>
+  <text class="edge" x="530" y="425">Proxy API calls</text>
+
+  <!-- Express to MongoDB (Mongoose) -->
+  <path class="line" d="M680 565 L820 565"/>
+  <text class="edge" x="712" y="555">Mongoose</text>
+
+  <!-- Django to Sentiment Analyzer (review text scoring) -->
+  <path class="softline" d="M380 345 C320 390 270 430 250 490"/>
+  <text class="edge" x="180" y="430">Review text scoring</text>
+
+  <!-- CI to Docker (builds image) -->
+  <path class="softline" d="M330 775 L450 775"/>
+  <text class="edge" x="350" y="765">Builds image</text>
+
+  <!-- Docker to Kubernetes (deploys to) -->
+  <path class="softline" d="M790 775 L900 775"/>
+  <text class="edge" x="813" y="765">Deploys to</text>
 </svg>
