@@ -141,6 +141,8 @@ Success response:
 
 Django fetches reviews from Express, then adds a `sentiment` field by calling the sentiment analyzer. If the analyzer is unavailable or returns an unexpected value, Django returns `neutral`.
 
+The Django sentiment parser accepts `sentiment`, `prediction`, or `label` fields from the analyzer response and falls back to `neutral` if the value is missing or unsupported.
+
 Success response:
 
 ```json

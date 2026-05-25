@@ -31,16 +31,29 @@ For a portfolio, it demonstrates full-stack ownership across UI polish, backend 
 
 ## Demo Gallery
 
-Screenshots can be added after running the local demo.
+### Home page
 
-| Screen | Expected path |
-| --- | --- |
-| Home | `docs/screenshots/home.png` |
-| Dealers | `docs/screenshots/dealers.png` |
-| Dealer detail | `docs/screenshots/dealer-detail.png` |
-| Post review | `docs/screenshots/post-review.png` |
-| Login | `docs/screenshots/login.png` |
-| About | `docs/screenshots/about.png` |
+![Home page](docs/screenshots/home.png)
+
+### Dealership directory
+
+![Dealership directory](docs/screenshots/dealers.png)
+
+### Dealer detail and reviews
+
+![Dealer detail and reviews](docs/screenshots/dealer-detail.png)
+
+### Post review form
+
+![Post review form](docs/screenshots/post-review.png)
+
+### Login page
+
+![Login page](docs/screenshots/login.png)
+
+### About page
+
+![About page](docs/screenshots/about.png)
 
 ## Architecture
 

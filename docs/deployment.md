@@ -185,3 +185,5 @@ The workflow does not currently publish images or deploy to Kubernetes.
 ## Known Deployment Caveat
 
 The public web app deployment may require cloud-specific URL/host configuration. In particular, Django `ALLOWED_HOSTS`, service URLs, container networking, static asset serving, CORS, and secrets should be reviewed before exposing the app publicly.
+
+Before real production deployment, rotate `SECRET_KEY`, set `DEBUG=False`, configure `ALLOWED_HOSTS` and `CSRF_TRUSTED_ORIGINS`, and manage secrets through environment variables or a secret manager.
